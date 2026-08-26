@@ -16,8 +16,8 @@ const links: Array<{ label: string; value: string; href: string; icon: IconType 
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/vineeth",
-    href: "https://linkedin.com/in/vineeth",
+    value: "linkedin.com/in/pabolu-vineeth",
+    href: "https://www.linkedin.com/in/pabolu-vineeth-129b4626b/",
     icon: LinkedinIcon,
   },
   {
@@ -82,7 +82,7 @@ export function Footer() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-8 max-w-[42ch] text-[17px] leading-[1.65] text-[#989898]">
+            <p className="mt-8 max-w-[42ch] text-[17px] leading-[1.65] text-[var(--text-secondary)]">
               I’m always open to interesting projects and collaborations.
               Whether it’s a product idea, a hackathon, or just a cool problem
               to solve — let’s talk.
@@ -93,10 +93,10 @@ export function Footer() {
             <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
               {links.map((link) => (
                 <div key={link.label}>
-                  <link.icon className="h-5 w-5 shrink-0 text-[#a8a8a2]" />
+                  <link.icon className="h-5 w-5 shrink-0 text-[var(--text-muted)]" />
                   <a
                     href={link.href}
-                    className="mt-3 inline-block break-all text-[15px] leading-[1.5] text-[#a8a8a2] transition-colors duration-300 hover:text-[#d62e69]"
+                    className="mt-3 inline-block break-all text-[15px] leading-[1.5] text-[var(--text-muted)] transition-colors duration-300 hover:text-[var(--accent)]"
                   >
                     {link.value}
                     <span aria-hidden="true" className="ml-2 whitespace-nowrap opacity-60">
@@ -112,14 +112,14 @@ export function Footer() {
             <div className="mt-20 grid gap-12 border-t border-[#1c1c1c] pt-14 sm:grid-cols-2 lg:grid-cols-4">
               {details.map((block) => (
                 <div key={block.label}>
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-[#4a4a4a]">
+                  <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
                     {block.label}
                   </p>
                   <ul className="mt-5 space-y-4">
                     {block.lines.map(([title, meta]) => (
                       <li key={title}>
-                        <p className="text-[15px] text-[#d8d5ce]">{title}</p>
-                        <p className="mt-0.5 text-[13px] leading-[1.5] text-[#666]">
+                        <p className="text-[15px] text-[var(--text-primary)]">{title}</p>
+                        <p className="mt-0.5 text-[13px] leading-[1.5] text-[var(--text-muted)]">
                           {meta}
                         </p>
                       </li>
@@ -130,11 +130,8 @@ export function Footer() {
             </div>
           </Reveal>
 
-          <div className="mt-24 flex flex-col justify-between gap-4 border-t border-[#1c1c1c] pt-8 text-[13px] text-[#4a4a4a] md:flex-row">
+          <div className="mt-24 flex flex-col justify-between gap-4 border-t border-[var(--border)] pt-8 text-[13px] text-[var(--text-dim)] md:flex-row">
             <p>Pabolu Vineeth © 2026</p>
-            <p className="uppercase tracking-[0.14em]">
-              Software Developer
-            </p>
           </div>
         </div>
       </div>

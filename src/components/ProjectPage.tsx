@@ -68,7 +68,7 @@ export function ProjectPage() {
             <div className="relative mx-auto mt-16 max-w-content px-6 md:px-12">
               <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1fr] lg:gap-14">
                 <div>
-                  <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[#4a4a4a]">
+                  <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
                     Production Evidence
                   </p>
                   <div className="overflow-hidden rounded-card border border-[var(--border-light)]">
@@ -80,7 +80,7 @@ export function ProjectPage() {
                   </div>
                 </div>
                 <div>
-                  <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[#4a4a4a]">
+                  <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
                     The build
                   </p>
                   <p className="max-w-[52ch] text-[17px] leading-[1.7] text-[var(--text-secondary)]">
@@ -95,7 +95,7 @@ export function ProjectPage() {
                         <dt className="shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-muted)]">
                           {fact.label}
                         </dt>
-                        <dd className="text-right text-[15px] text-[#d8d5ce]">
+                        <dd className="text-right text-[15px] text-[var(--text-primary)]">
                           {fact.value}
                         </dd>
                       </div>
@@ -114,7 +114,7 @@ export function ProjectPage() {
             </Reveal>
             <div>
               <Reveal delay={0.08}>
-                <p className="max-w-[62ch] text-[17px] leading-[1.7] text-[#989898]">
+                <p className="max-w-[62ch] text-[17px] leading-[1.7] text-[var(--text-secondary)]">
                   {project.approach}
                 </p>
               </Reveal>
@@ -125,10 +125,10 @@ export function ProjectPage() {
                       key={fact.label}
                       className="flex items-baseline justify-between gap-6 border-b border-[var(--border)] py-3 last:border-b-0"
                     >
-                      <dt className="shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-[#666]">
+                      <dt className="shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-muted)]">
                         {fact.label}
                       </dt>
-                      <dd className="text-right text-[15px] text-[#d8d5ce]">
+                      <dd className="text-right text-[15px] text-[var(--text-primary)]">
                         {fact.value}
                       </dd>
                     </div>
@@ -151,7 +151,7 @@ export function ProjectPage() {
                 href={project.repo}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2.5 self-center font-mono text-[13px] text-[#989898] transition-colors duration-300 hover:text-[#d62e69]"
+                className="group inline-flex items-center gap-2.5 self-center font-mono text-[13px] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--accent)]"
               >
                 <GithubIcon className="h-[17px] w-[17px] shrink-0" />
                 GitHub

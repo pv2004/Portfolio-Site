@@ -5,10 +5,14 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 type Mode = "idle" | "hover" | "view";
 
 export function CustomCursor() {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
   const [enabled, setEnabled] = useState(false);
   const [mode, setMode] = useState<Mode>("idle");
   const [visible, setVisible] = useState(false);
@@ -63,12 +67,20 @@ export function CustomCursor() {
 
   const size = mode === "view" ? 88 : mode === "hover" ? 40 : 12;
 
+  const dotColor = isLight ? "#1a1a1a" : "#f0eee8";
+  const ringBorder = isLight ? "rgba(26, 26, 26, 0.7)" : "rgba(240, 238, 232, 0.7)";
+  const viewBg = "rgba(214, 46, 105, 0.92)";
+
   return (
     <>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[100] h-[10px] w-[10px] rounded-full bg-[#f0eee8]"
-        style={{ x: dotX, y: dotY }}
+        className="pointer-events-none fixed left-0 top-0 z-[100] h-[10px] w-[10px] rounded-full"
+        style={{
+          x: dotX,
+          y: dotY,
+          backgroundColor: dotColor,
+        }}
         animate={{
           opacity: visible && mode !== "view" ? 1 : 0,
         }}
@@ -80,15 +92,12 @@ export function CustomCursor() {
         style={{ x: ringX, y: ringY, opacity: visible ? 1 : 0 }}
       >
         <motion.div
-          className="absolute inset-0 rounded-full border border-[#f0eee8]/70"
+          className="absolute inset-0 rounded-full border"
           animate={{
             scale: size / 48,
             backgroundColor:
-              mode === "view" ? "rgba(214, 46, 105, 0.92)" : "rgba(8, 8, 8, 0)",
-            borderColor:
-              mode === "view"
-                ? "rgba(214, 46, 105, 0.92)"
-                : "rgba(240, 238, 232, 0.7)",
+              mode === "view" ? viewBg : "rgba(8, 8, 8, 0)",
+            borderColor: mode === "view" ? viewBg : ringBorder,
           }}
           transition={{ duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
         />

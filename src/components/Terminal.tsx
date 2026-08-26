@@ -194,12 +194,12 @@ function run(raw: string): Line[] {
             <br />
             <span className="text-[#989898]">linkedin  </span>
             <a
-              href="https://linkedin.com/in/vineeth"
+              href="https://www.linkedin.com/in/pabolu-vineeth-129b4626b/"
               target="_blank"
               rel="noreferrer"
               className={linkCls()}
             >
-              /in/vineeth ↗
+              /in/pabolu-vineeth ↗
             </a>
             <br />
             <span className="text-[#989898]">github   </span>

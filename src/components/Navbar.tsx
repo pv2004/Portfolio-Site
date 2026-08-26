@@ -93,7 +93,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-[#252525] text-[#f0eee8] md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-light)] text-[var(--text-primary)] md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -139,7 +139,7 @@ export function Navbar() {
                 </li>
               ))}
             </ul>
-            <p className="mt-16 text-sm uppercase tracking-[0.2em] text-[#666]">
+            <p className="mt-16 text-sm uppercase tracking-[0.2em] text-[var(--text-muted)]">
               Software Developer
             </p>
           </motion.div>

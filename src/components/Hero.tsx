@@ -35,7 +35,7 @@ export function Hero() {
       <div className="relative z-10 flex max-w-[900px] flex-col items-center text-center">
         <motion.p
           {...fade(0.1)}
-          className="mb-10 text-[18px] text-[#b0b0b0] md:text-[19px]"
+          className="mb-10 text-[18px] text-[var(--text-secondary)] md:text-[19px]"
         >
           Hey! I am{" "}
           <span className="font-serif italic text-[var(--text-primary)]">Pabolu Vineeth</span>
