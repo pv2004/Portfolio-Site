@@ -14,7 +14,7 @@ export interface Project {
   description: string;
   tags: string[];
   year: string;
-  art: "waveform" | "constellation" | "silicon" | "racetrack" | "aero" | "gate" | "dataflow" | "analytics" | "sky";
+  art: "waveform" | "constellation" | "silicon" | "racetrack" | "aero" | "gate" | "dataflow" | "analytics" | "sky" | "pocketdash";
   image?: string;
   role: string;
   problem: string;
@@ -26,6 +26,42 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: "pocketdash",
+    title: "PocketDash — ESP32-C3 Pocket Dashboard",
+    description:
+      "A compact smart dashboard built on the ESP32-C3 SuperMini with a 0.96\" SSD1306 OLED display, delivering real-time digital clock (NTP), motivational quotes (ZenQuotes), aircraft radar (ADSB.lol), weather & air quality (Open-Meteo) in a distraction-free pocket interface.",
+    tags: ["IOT", "ESP32", "C++", "OLED", "ADSB.lol", "REST APIs"],
+    year: "2025",
+    art: "pocketdash",
+    image: "/images/pocketdash.jpg",
+    role: "Embedded Systems · Firmware Engineering",
+    problem:
+      "Checking daily information like time, weather forecast, air quality index, nearby aircraft, or daily motivation requires repeatedly unlocking phones or navigating cluttered browser tabs, creating digital friction and distraction.",
+    approach:
+      "Engineered a modular C++ firmware architecture on the ESP32-C3 SuperMini microcontroller using Adafruit GFX and SSD1306 OLED drivers. The firmware fetches JSON payload data over secure Wi-Fi from ADSB.lol, Open-Meteo, Open-Meteo AQI, ZenQuotes, and pool.ntp.org (NTPClient), running an automated page-rotation loop across 5 dedicated display modules (clock.cpp, quote.cpp, flight.cpp, weather.cpp, display.cpp).",
+    features: [
+      "🕒 Digital Clock — NTP-synchronized time, day, & date in IST (GMT +5:30)",
+      "💬 Daily Quotes — Random motivational quotes from ZenQuotes API (5-min auto refresh)",
+      "✈️ Aircraft Radar — ADSB.lol live flight radar showing callsign, type, altitude, speed, & direction",
+      "🌤️ Weather & Air Quality — Open-Meteo real-time temp, humidity, wind, & AQI status",
+      "🔄 Auto Page Rotation — Smooth automated sequence cycling through all screen modules",
+      "📟 Hardware & Stack — ESP32-C3 SuperMini, 0.96\" SSD1306 OLED (128×64), ArduinoJson, HTTPClient",
+    ],
+    stack: [
+      { label: "Microcontroller", value: "ESP32-C3 SuperMini" },
+      { label: "Display", value: "0.96\" SSD1306 OLED (128×64 I2C)" },
+      { label: "APIs Integrated", value: "ADSB.lol · Open-Meteo · ZenQuotes · NTP" },
+      { label: "Libraries", value: "ArduinoJson · NTPClient · Adafruit GFX / SSD1306" },
+      { label: "Firmware Architecture", value: "Modular C++ (clock, quote, flight, weather)" },
+    ],
+    metrics: [
+      { value: "5", label: "live screen modules" },
+      { value: "128x64", label: "OLED monochrome display" },
+      { value: "5-APIs", label: "integrated cloud endpoints" },
+    ],
+    repo: "https://github.com/pv2004/PocketDash",
+  },
   {
     id: "result-management",
     title: "Smart Result Management System",

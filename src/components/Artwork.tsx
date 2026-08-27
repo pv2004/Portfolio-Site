@@ -1,4 +1,4 @@
-﻿import type { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 function Frame({ children, bg }: { children: ReactNode; bg: string }) {
   return (
@@ -95,6 +95,52 @@ const art: Record<string, () => ReactNode> = {
         <circle cx="700" cy="420" r="1.5" />
         <circle cx="90" cy="440" r="1.5" />
         <circle cx="480" cy="80" r="1.5" />
+      </g>
+    </Frame>
+  ),
+
+  pocketdash: () => (
+    <Frame bg="#0b0e14">
+      <defs>
+        <radialGradient id="oledGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#00d2ff" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#00d2ff" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="600" fill="url(#oledGlow)" />
+      
+      <rect x="160" y="100" width="480" height="400" rx="16" fill="#141923" stroke="#2a3447" strokeWidth="3" />
+      
+      {[190, 230, 270, 310, 350, 390, 430, 470, 510, 550, 590].map((x) => (
+        <g key={x}>
+          <circle cx={x} cy="120" r="5" fill="#f0c95a" opacity="0.85" />
+          <circle cx={x} cy="480" r="5" fill="#f0c95a" opacity="0.85" />
+        </g>
+      ))}
+
+      <rect x="200" y="160" width="70" height="85" rx="4" fill="#0d1117" stroke="#42b8d9" strokeWidth="1.5" />
+      <path d="M 210 172 H 260 V 184 H 220 V 196 H 260 V 208 H 210" fill="none" stroke="#f0c95a" strokeWidth="2" opacity="0.85" />
+      <text x="208" y="232" fontFamily="'JetBrains Mono', monospace" fontSize="9" fill="#42b8d9">ESP32-C3</text>
+
+      <rect x="295" y="160" width="315" height="280" rx="8" fill="#05070a" stroke="#00d2ff" strokeWidth="2" />
+      
+      <g fontFamily="'JetBrains Mono', monospace">
+        <text x="315" y="195" fontSize="13" fill="#00d2ff" fontWeight="bold">✈️ ADSB.lol Radar: AI101</text>
+        <text x="315" y="218" fontSize="11" fill="#7ac943">Alt: 32,000ft · 840 km/h · NE</text>
+        
+        <line x1="315" y1="234" x2="590" y2="234" stroke="#1f293d" strokeWidth="1" />
+
+        <text x="315" y="262" fontSize="13" fill="#f0c95a">🌤️ Open-Meteo Weather</text>
+        <text x="315" y="284" fontSize="11" fill="#d8d5ce">Temp: 28.5°C · Hum: 62% · AQI 42</text>
+
+        <line x1="315" y1="298" x2="590" y2="298" stroke="#1f293d" strokeWidth="1" />
+
+        <text x="315" y="326" fontSize="13" fill="#d62e69">⏰ NTP Time Sync (NTPClient)</text>
+        <text x="315" y="348" fontSize="11" fill="#d8d5ce">14:38:21 · IST (GMT +5:30)</text>
+
+        <line x1="315" y1="362" x2="590" y2="362" stroke="#1f293d" strokeWidth="1" />
+
+        <text x="315" y="394" fontSize="11" fontStyle="italic" fill="#f09bc0">"Love what you do." — ZenQuotes API</text>
       </g>
     </Frame>
   ),

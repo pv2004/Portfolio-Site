@@ -4,8 +4,8 @@ import { useTheme } from "../context/ThemeContext";
 
 const links = [
   { label: "Work", href: "#work" },
-  { label: "Terminal", href: "#terminal" },
   { label: "About", href: "#about" },
+  { label: "Terminal", href: "#terminal" },
   { label: "Contact", href: "#contact" },
 ];
 
