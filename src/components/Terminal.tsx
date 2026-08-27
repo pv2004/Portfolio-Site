@@ -414,9 +414,8 @@ export function Terminal() {
 
   const focusInput = () => inputRef.current?.focus({ preventScroll: true });
 
-  const submit = () => {
-    const raw = value;
-    const trimmed = raw.trim();
+  const executeCmd = (cmdToRun: string) => {
+    const trimmed = cmdToRun.trim();
     setValue("");
     const echoed = makeLine(
       <span>
@@ -426,12 +425,17 @@ export function Terminal() {
         <span className="ml-2 text-[#f0eee8]">{trimmed}</span>
       </span>
     );
-    const result = trimmed ? run(raw) : [];
+    const result = trimmed ? run(cmdToRun) : [];
     setLines((prev) => [...prev, echoed, ...result]);
     if (trimmed && trimmed !== "clear") {
       setHistory((prev) => [...prev, trimmed]);
     }
     setHistIdx(-1);
+    focusInput();
+  };
+
+  const submit = () => {
+    executeCmd(value);
   };
 
   const complete = () => {
@@ -531,8 +535,7 @@ export function Terminal() {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              setValue(c);
-              focusInput();
+              executeCmd(c);
             }}
             className="tag-dark px-3.5 py-1 font-mono text-[12px] transition-colors duration-300 hover:border-[#d62e69] hover:text-[#f09bc0]"
           >
