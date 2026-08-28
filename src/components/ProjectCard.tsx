@@ -22,10 +22,10 @@ export function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
 
-      <h3 className="mt-7 font-serif text-[30px] leading-[1.1] text-[#0a0a0a] transition-colors duration-300 group-hover:text-[#d62e69]">
+      <h3 className="mt-7 font-serif text-[30px] leading-[1.1] text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[#d62e69]">
         {project.title}
       </h3>
-      <p className="mt-3 max-w-[46ch] text-[17px] leading-[1.5] text-[#454540]">
+      <p className="mt-3 max-w-[46ch] text-[17px] leading-[1.5] text-[var(--text-secondary)]">
         {project.description}
       </p>
       <ul className="mt-5 flex flex-wrap gap-2">

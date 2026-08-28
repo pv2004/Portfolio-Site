@@ -135,7 +135,7 @@
   .tag {
     border: 1px solid rgba(214, 46, 105, 0.55);
     border-radius: 999px;
-    color: rgba(10, 10, 10, 0.72);
+    color: var(--text-secondary);
   }
   .tag-dark {
     border: 1px solid rgba(214, 46, 105, 0.55);
