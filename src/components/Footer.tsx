@@ -46,6 +46,7 @@ const details = [
     lines: [
       ["B.Tech, CSE", "SRM University, Kattankulathur · CGPA 8.58"],
       ["Intermediate MPC", "Vidya Junior College, Chirala · 82.1%"],
+      ["X Standard", "Dr. K.K.R. Gowtham Concept School, Gudivada"],
     ],
   },
   {
