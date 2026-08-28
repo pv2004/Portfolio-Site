@@ -29,9 +29,6 @@ export function ProjectPage() {
         >
           ← All work
         </Link>
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
-          Pabolu Vineeth · {project.year}
-        </span>
       </header>
 
       <div className="relative overflow-hidden pt-10 md:pt-16">
