@@ -36,7 +36,7 @@ function highlight(line: string): ReactNode[] {
     const idx = m.index ?? 0;
     if (idx > last) {
       nodes.push(
-        <span key={key++} className="text-[#d8d5ce]">
+        <span key={key++} className="text-[var(--text-primary)]">
           {line.slice(last, idx)}
         </span>
       );
@@ -60,7 +60,7 @@ function highlight(line: string): ReactNode[] {
   }
   if (last < line.length) {
     nodes.push(
-      <span key={key++} className="text-[#d8d5ce]">
+      <span key={key++} className="text-[var(--text-primary)]">
         {line.slice(last)}
       </span>
     );
@@ -76,8 +76,8 @@ function StatusBar({ phase }: { phase: Phase }) {
         ? { dot: "bg-[#42b8d9]", label: "compiling" }
         : { dot: "bg-[#7ac943]", label: "running" };
   return (
-    <div className="flex items-center justify-between border-t border-[#1c1c1c] bg-[#141414] px-5 py-2.5">
-      <span className="flex items-center gap-2.5 font-mono text-[11.5px] text-[#989898]">
+    <div className="flex items-center justify-between border-t border-[var(--border)] bg-[var(--bg-card)] px-5 py-2.5">
+      <span className="flex items-center gap-2.5 font-mono text-[11.5px] text-[var(--text-secondary)]">
         <span
           className={`${config.dot} ${phase !== "typing" ? "pulse-dot" : ""} h-2 w-2 rounded-full`}
         />
@@ -94,7 +94,7 @@ function StatusBar({ phase }: { phase: Phase }) {
           </span>
         )}
       </span>
-      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#4a4a4a]">
+      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
         python 3.12
       </span>
     </div>
@@ -139,21 +139,21 @@ export function CodeCompiler() {
   const lines = SCRIPT.slice(0, count).split("\n");
 
   return (
-    <div className="overflow-hidden rounded-card border border-[#252525] bg-[#101010] shadow-soft transition-colors duration-500 hover:border-[#333]">
-      <div className="flex items-center gap-2 border-b border-[#1c1c1c] bg-[#141414] px-5 py-3.5">
+    <div className="overflow-hidden rounded-card border border-[var(--border-light)] bg-[var(--bg-card)] shadow-soft transition-colors duration-500 hover:border-[var(--border)]">
+      <div className="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--bg-card)] px-5 py-3.5">
         <span className="h-3 w-3 rounded-full bg-[#d62e69]" />
         <span className="h-3 w-3 rounded-full bg-[#f0c95a]" />
         <span className="h-3 w-3 rounded-full bg-[#7ac943]" />
-        <span className="ml-3 select-none font-mono text-[12px] tracking-wide text-[#666]">
+        <span className="ml-3 select-none font-mono text-[12px] tracking-wide text-[var(--text-muted)]">
           weather_app.py
         </span>
-        <span className="ml-auto font-mono text-[11px] uppercase tracking-[0.18em] text-[#4a4a4a]">
+        <span className="ml-auto font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
           live demo
         </span>
       </div>
 
       <div className="flex h-[258px] gap-4 overflow-hidden px-5 py-4 font-mono text-[13px] leading-[1.5]">
-        <div className="select-none pt-px text-right text-[#3a3a3a]">
+        <div className="select-none pt-px text-right text-[var(--text-dim)]">
           {lines.map((_, i) => (
             <div key={i}>{String(i + 1).padStart(2, " ")}</div>
           ))}
@@ -163,21 +163,21 @@ export function CodeCompiler() {
             <div key={i}>
               {highlight(line)}
               {i === lines.length - 1 && phase === "typing" && (
-                <span className="term-caret ml-px inline-block h-[13px] w-[7px] translate-y-[2px] bg-[#f0eee8]" />
+                <span className="term-caret ml-px inline-block h-[13px] w-[7px] translate-y-[2px] bg-[var(--text-primary)]" />
               )}
             </div>
           ))}
         </pre>
       </div>
 
-      <div className="min-h-[132px] border-t border-[#1c1c1c] bg-[#0a0a0a] px-5 py-3.5 font-mono text-[12.5px] leading-relaxed">
+      <div className="min-h-[132px] border-t border-[var(--border)] bg-[var(--bg)] px-5 py-3.5 font-mono text-[12.5px] leading-relaxed">
         {phase === "running" || reduced ? (
           <>
-            <div className="out-line text-[#666]">$ python weather_app.py</div>
+            <div className="out-line text-[var(--text-muted)]">$ python weather_app.py</div>
             {OUTPUT_ROWS.map(([day, temp, rain], i) => (
               <div
                 key={day}
-                className="out-line text-[#d8d5ce]"
+                className="out-line text-[var(--text-primary)]"
                 style={{ animationDelay: `${300 + i * 350}ms` }}
               >
                 <span className="text-[#f09bc0]">{day}</span>
@@ -196,7 +196,7 @@ export function CodeCompiler() {
             </div>
           </>
         ) : (
-          <p className="italic text-[#4a4a4a]">
+          <p className="italic text-[var(--text-dim)]">
             ▸ output appears here when the program runs
           </p>
         )}

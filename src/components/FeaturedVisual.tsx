@@ -4,7 +4,7 @@ import { SectionLabel } from "./SectionLabel";
 
 export function FeaturedVisual() {
   return (
-    <section id="showcase" className="relative overflow-hidden bg-[#080808] py-32 md:py-40">
+    <section id="showcase" className="relative overflow-hidden bg-[var(--bg)] py-32 md:py-40">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
