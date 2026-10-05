@@ -65,8 +65,14 @@ export function Navbar() {
           ))}
           <li>
             <div className="flex items-center gap-1 rounded-full bg-[var(--bg-card)] p-1 border border-[var(--border-light)]">
-              <span className="cursor-default rounded-full bg-[var(--bg)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] shadow-sm">Code</span>
-              <a href={`https://design-portfolio-weld.vercel.app/?theme=${theme}`} className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">Art</a>
+              <div className="group relative flex items-center">
+                <span className="cursor-default rounded-full bg-[var(--bg)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] shadow-sm">Code</span>
+                <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--text-primary)] px-2 py-1 text-[10px] font-medium tracking-normal normal-case text-[var(--bg)] opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 z-50">You are here</span>
+              </div>
+              <div className="group relative flex items-center">
+                <a href={`https://design-portfolio-weld.vercel.app/?theme=${theme}`} className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">Art</a>
+                <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--text-primary)] px-2 py-1 text-[10px] font-medium tracking-normal normal-case text-[var(--bg)] opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 z-50">View Design Portfolio</span>
+              </div>
             </div>
           </li>
           <li>
@@ -99,8 +105,14 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 md:hidden">
           <div className="flex items-center gap-1 rounded-full bg-[var(--bg-card)] p-1 border border-[var(--border-light)]">
-            <span className="cursor-default rounded-full bg-[var(--bg)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] shadow-sm">Code</span>
-            <a href={`https://design-portfolio-weld.vercel.app/?theme=${theme}`} className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">Art</a>
+            <div className="group relative flex items-center">
+              <span className="cursor-default rounded-full bg-[var(--bg)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] shadow-sm">Code</span>
+              <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--text-primary)] px-2 py-1 text-[10px] font-medium tracking-normal normal-case text-[var(--bg)] opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 z-50">You are here</span>
+            </div>
+            <div className="group relative flex items-center">
+              <a href={`https://design-portfolio-weld.vercel.app/?theme=${theme}`} className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">Art</a>
+              <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--text-primary)] px-2 py-1 text-[10px] font-medium tracking-normal normal-case text-[var(--bg)] opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 z-50">View Design Portfolio</span>
+            </div>
           </div>
           <button
             type="button"
