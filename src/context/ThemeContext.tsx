@@ -14,6 +14,14 @@ export function useTheme() {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("theme")) {
+        const t = params.get("theme") as Theme;
+        if (t === "dark" || t === "light") {
+          window.history.replaceState({}, document.title, window.location.pathname);
+          return t;
+        }
+      }
       return (localStorage.getItem("theme") as Theme) || "dark";
     }
     return "dark";

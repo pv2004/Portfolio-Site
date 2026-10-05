@@ -64,6 +64,12 @@ export function Navbar() {
             </li>
           ))}
           <li>
+            <div className="flex items-center gap-1 rounded-full bg-[var(--bg-card)] p-1 border border-[var(--border-light)]">
+              <span className="cursor-default rounded-full bg-[var(--bg)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] shadow-sm">Code</span>
+              <a href={`https://design-portfolio-weld.vercel.app/?theme=${theme}`} className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">Art</a>
+            </div>
+          </li>
+          <li>
             <button
               type="button"
               onClick={toggle}
@@ -92,6 +98,10 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-1 rounded-full bg-[var(--bg-card)] p-1 border border-[var(--border-light)]">
+            <span className="cursor-default rounded-full bg-[var(--bg)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] shadow-sm">Code</span>
+            <a href={`https://design-portfolio-weld.vercel.app/?theme=${theme}`} className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">Art</a>
+          </div>
           <button
             type="button"
             onClick={toggle}
