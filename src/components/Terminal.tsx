@@ -537,7 +537,7 @@ export function Terminal() {
               e.stopPropagation();
               executeCmd(c);
             }}
-            className="tag-dark px-3.5 py-1 font-mono text-[12px] transition-colors duration-300 hover:border-[#d62e69] hover:text-[#f09bc0]"
+            className="tag-dark tag-dark-fixed px-3.5 py-1 font-mono text-[12px] transition-colors duration-300 hover:border-[#d62e69] hover:text-[#f09bc0]"
           >
             {c}
           </button>

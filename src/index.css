@@ -15,6 +15,8 @@
     --border-light: #252525;
     --accent: #d62e69;
     --accent-secondary: #f09bc0;
+    /* Tech-stack badge text (dark surfaces / dark theme) */
+    --tag-text: rgba(240, 238, 232, 0.78);
   }
 
   [data-theme="light"] {
@@ -29,6 +31,8 @@
     --border-light: #d0cdc6;
     --accent: #c4205a;
     --accent-secondary: #d62e69;
+    /* Tech-stack badge text — dark ink so badges stay readable on light bg */
+    --tag-text: #2f2f2f;
   }
 
   html {
@@ -137,9 +141,18 @@
     border-radius: 999px;
     color: var(--text-secondary);
   }
+  /* Light theme: badges sit on a near-white page, so use solid dark ink */
+  [data-theme="light"] .tag {
+    color: var(--tag-text);
+  }
   .tag-dark {
     border: 1px solid rgba(214, 46, 105, 0.55);
     border-radius: 999px;
+    color: var(--tag-text);
+  }
+  /* Badges rendered on a surface that is always dark (e.g. the terminal)
+     must keep light text even when the site theme is light */
+  .tag-dark-fixed {
     color: rgba(240, 238, 232, 0.78);
   }
 }
