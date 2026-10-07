@@ -78,7 +78,7 @@ export function Footer() {
             <SectionLabel>Contact</SectionLabel>
             <h2 className="mt-6 max-w-[11ch] font-serif text-[clamp(44px,6vw,88px)] leading-[1.02] text-[var(--text-primary)]">
               Let’s make something that{" "}
-              <em className="italic text-[#d62e69]">matters.</em>
+              <em className="italic text-[var(--accent)]">matters.</em>
             </h2>
           </Reveal>
 
@@ -97,7 +97,7 @@ export function Footer() {
                   <link.icon className="h-5 w-5 shrink-0 text-[var(--text-muted)]" />
                   <a
                     href={link.href}
-                    className="mt-3 inline-block break-all text-[15px] leading-[1.5] text-[var(--text-muted)] transition-colors duration-300 hover:text-[var(--accent)]"
+                    className="mt-3 inline-block break-all py-1 text-[15px] leading-[1.5] text-[var(--text-muted)] transition-colors duration-300 hover:text-[var(--accent)]"
                   >
                     {link.value}
                     <span aria-hidden="true" className="ml-2 whitespace-nowrap opacity-60">
@@ -110,7 +110,7 @@ export function Footer() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="mt-20 grid gap-12 border-t border-[#1c1c1c] pt-14 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-20 grid gap-12 border-t border-[var(--border)] pt-14 sm:grid-cols-2 lg:grid-cols-4">
               {details.map((block) => (
                 <div key={block.label}>
                   <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">

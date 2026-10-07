@@ -25,7 +25,7 @@ export function ProjectPage() {
       <header className="mx-auto flex max-w-content items-center justify-between px-6 py-7 md:px-12">
         <Link
           to="/"
-          className="font-mono text-[12px] uppercase tracking-[0.2em] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--accent)]"
+          className="inline-block py-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--accent)]"
         >
           ← All work
         </Link>
@@ -72,7 +72,11 @@ export function ProjectPage() {
                     <img
                       src={project.image}
                       alt={`${project.title} — production screenshot`}
-                      className="w-full object-cover"
+                      width={project.imageWidth}
+                      height={project.imageHeight}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-auto w-full object-cover"
                     />
                   </div>
                 </div>
@@ -148,7 +152,7 @@ export function ProjectPage() {
                 href={project.repo}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2.5 self-center font-mono text-[13px] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--accent)]"
+                className="group inline-flex items-center gap-2.5 self-center py-2 font-mono text-[13px] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--accent)]"
               >
                 <GithubIcon className="h-[17px] w-[17px] shrink-0" />
                 GitHub
@@ -201,7 +205,7 @@ export function ProjectPage() {
                 key={feature}
                 className="group flex items-baseline gap-5 border-b border-[var(--border)] py-4 transition-colors duration-300 hover:border-[var(--border-light)]"
               >
-                <span className="shrink-0 font-mono text-[11px] text-[var(--accent)]/60 transition-colors duration-300 group-hover:text-[var(--accent)]">
+                <span className="shrink-0 font-mono text-[11px] text-[var(--accent)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-[15.5px] leading-[1.55] text-[var(--text-secondary)]">

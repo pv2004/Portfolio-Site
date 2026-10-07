@@ -16,6 +16,8 @@ export interface Project {
   year: string;
   art: "waveform" | "constellation" | "silicon" | "racetrack" | "aero" | "gate" | "dataflow" | "analytics" | "sky" | "pocketdash";
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   role: string;
   problem: string;
   approach: string;
@@ -34,7 +36,7 @@ export const projects: Project[] = [
     tags: ["IOT", "ESP32", "C++", "OLED", "ADSB.lol", "REST APIs"],
     year: "2025",
     art: "pocketdash",
-    image: "/images/pocketdash.jpg",
+    image: "/images/pocketdash.jpg", imageWidth: 1200, imageHeight: 896,
     role: "Embedded Systems · Firmware Engineering",
     problem:
       "Checking daily information like time, weather forecast, air quality index, nearby aircraft, or daily motivation requires repeatedly unlocking phones or navigating cluttered browser tabs, creating digital friction and distraction.",
@@ -70,7 +72,7 @@ export const projects: Project[] = [
     tags: ["Python", "Tkinter", "SQLite"],
     year: "2024",
     art: "dataflow",
-    image: "/images/result-management.jpg",
+    image: "/images/result-management.jpg", imageWidth: 1200, imageHeight: 896,
     role: "Design · Development",
     problem:
       "Student results lived in registers and spreadsheets — hard to search, easy to corrupt, impossible to trust. Finding one record meant scrolling; entering one meant risking silent duplicates.",
@@ -106,7 +108,7 @@ export const projects: Project[] = [
     tags: ["Power BI", "Python", "Excel"],
     year: "2023",
     art: "analytics",
-    image: "/images/banking-dashboard.jpg",
+    image: "/images/banking-dashboard.jpg", imageWidth: 1200, imageHeight: 896,
     role: "EDA · Modelling · Dashboard Design",
     problem:
       "Raw banking exports say very little on their own. Leadership kept asking simple questions — how do loans compare to deposits, which customers hold them, where is the risk — and the CSVs had no answers, only rows.",
@@ -174,7 +176,7 @@ export const projects: Project[] = [
     tags: ["IOT", "Arduino", "AI/ML"],
     year: "2025",
     art: "silicon",
-    image: "/images/gemini-ai.png",
+    image: "/images/gemini-ai.png", imageWidth: 1632, imageHeight: 991,
     role: "Embedded Systems · API Integration",
     problem:
       "Can a $3 microcontroller run a large language model? The gap between cloud AI and embedded hardware feels unbridgeable — until you find the right API bridge.",
@@ -209,7 +211,7 @@ export const projects: Project[] = [
     tags: ["Python", "ML", "FastF1"],
     year: "2025",
     art: "racetrack",
-    image: "/images/f1-prediction.png",
+    image: "/images/f1-prediction.png", imageWidth: 792, imageHeight: 813,
     role: "Data Engineering · Modelling",
     problem:
       "Race predictions based on qualifying times alone miss the deeper story: sector pace, tyre degradation, and historical lap patterns. A model trained on real telemetry data can find what human guessing cannot.",
@@ -245,7 +247,7 @@ export const projects: Project[] = [
     tags: ["IOT", "3D", "WebSocket"],
     year: "2025",
     art: "aero",
-    image: "/images/aircraft-3d-1.png",
+    image: "/images/aircraft-3d-1.png", imageWidth: 1307, imageHeight: 1127,
     role: "Embedded Systems · 3D Visualisation",
     problem:
       "Visualising real-time sensor data in 3D requires bridging raw gyroscope readings with a rendering pipeline — fast enough to feel alive, accurate enough to be useful.",

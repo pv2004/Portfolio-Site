@@ -10,7 +10,7 @@ export function Experiments() {
           <SectionLabel>Terminal</SectionLabel>
           <h2 className="mt-6 max-w-[13ch] font-serif text-[clamp(40px,4.8vw,64px)] leading-[1.04] text-[var(--text-primary)]">
             Talk to the{" "}
-            <em className="italic text-[#F09BC0]">terminal</em>
+            <em className="italic text-[var(--accent-secondary)]">terminal</em>
           </h2>
         </Reveal>
       </div>

@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[calc(100vh-82px)] flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-24 md:px-12"
+      className="relative flex hero-min-h flex-col items-center justify-center overflow-hidden px-6 pt-36 pb-24 md:px-12"
     >
       <div
         aria-hidden="true"
@@ -35,10 +35,12 @@ export function Hero() {
       <div className="relative z-10 flex max-w-[900px] flex-col items-center text-center">
         <motion.p
           {...fade(0.1)}
-          className="mb-10 text-[18px] text-[var(--text-secondary)] md:text-[19px]"
+          className="mb-8 text-[clamp(24px,2.8vw,32px)] leading-snug text-[var(--text-secondary)] md:mb-10"
         >
           Hey! I am{" "}
-          <span className="font-serif italic text-[var(--text-primary)]">Pabolu Vineeth</span>
+          <span className="font-serif italic text-[var(--text-primary)]">
+            Pabolu Vineeth
+          </span>
         </motion.p>
 
         <motion.h1
@@ -46,7 +48,7 @@ export function Hero() {
           className="font-display font-serif text-[clamp(42px,10vw,96px)] leading-[0.98] text-[var(--text-primary)]"
         >
           Building for the way people{" "}
-          <em className="italic text-[#d62e69]">think, work</em> and connect.
+          <em className="italic text-[var(--accent)]">think, work</em> and connect.
         </motion.h1>
 
         <motion.p

@@ -39,14 +39,20 @@ const SECTIONS: Record<string, string | null> = {
   contact: "#contact",
 };
 
+function scrollBehavior(): ScrollBehavior {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
+}
+
 function scrollToSection(target: string | null): boolean {
   if (target === null) {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: scrollBehavior() });
     return true;
   }
   const el = document.querySelector<HTMLElement>(target);
   if (!el) return false;
-  el.scrollIntoView({ behavior: "smooth" });
+  el.scrollIntoView({ behavior: scrollBehavior() });
   return true;
 }
 
@@ -84,7 +90,7 @@ function run(raw: string): Line[] {
       );
       out.push(
         makeLine(
-          <span className="text-[#666]">
+          <span className="text-[#8a8a8a]">
             Tip: ↑/↓ for history · Tab autocompletes · there may be secrets.
           </span>
         )
@@ -96,7 +102,7 @@ function run(raw: string): Line[] {
         makeLine(
           <span className="leading-relaxed">
             <span className="text-[#f0eee8]">Pabolu Vineeth</span>
-            <span className="text-[#666]"> — </span>
+            <span className="text-[#8a8a8a]"> — </span>
             <span className="text-[#f09bc0]">
               software developer
             </span>
@@ -116,7 +122,7 @@ function run(raw: string): Line[] {
           makeLine(
             <span className="leading-relaxed">
               <span className="text-[#f0eee8]">{p.title}</span>{" "}
-              <span className="text-[#666]">({p.year})</span>
+              <span className="text-[#8a8a8a]">({p.year})</span>
               <br />
               <span className="text-[#989898]">{p.description}</span>
               <br />
@@ -127,7 +133,7 @@ function run(raw: string): Line[] {
       );
       out.push(
         makeLine(
-          <span className="text-[#666]">
+          <span className="text-[#8a8a8a]">
             Full view at{" "}
             <button
               type="button"
@@ -169,7 +175,7 @@ function run(raw: string): Line[] {
           makeLine(
             <span>
               <span className="text-[#f09bc0]">{k}</span>
-              <span className="text-[#666]">{" \u2502 "}</span>
+              <span className="text-[#8a8a8a]">{" \u2502 "}</span>
               <span className="text-[#d8d5ce]">{v}</span>
             </span>
           )
@@ -248,7 +254,7 @@ function run(raw: string): Line[] {
             <span className="text-[#42b8d9]">projects/</span>{" "}
             <span className="text-[#42b8d9]">experiments/</span> ideas.txt
             resume.pdf{" "}
-            <span className="text-[#666]">secrets/</span>
+            <span className="text-[#8a8a8a]">secrets/</span>
           </span>
         )
       );
@@ -357,7 +363,7 @@ function run(raw: string): Line[] {
               command not found: {cmd}
             </span>
             <br />
-            <span className="text-[#666]">
+            <span className="text-[#8a8a8a]">
               try{" "}
               <button
                 type="button"
@@ -387,14 +393,14 @@ export function Terminal() {
   useEffect(() => {
     setLines([
       makeLine(
-        <span className="text-[#666]">
+        <span className="text-[#8a8a8a]">
           Last login: {new Date().toDateString()} on ttys001
         </span>
       ),
       makeLine(
         <span className="leading-relaxed">
           <span className="text-[#f0eee8]">Welcome to vineeth.dev</span>
-          <span className="text-[#666]"> — a portfolio you can talk to.</span>
+          <span className="text-[#8a8a8a]"> — a portfolio you can talk to.</span>
           <br />
           <span className="text-[#989898]">
             Type <span className="text-[#f09bc0]">help</span> to look around.
@@ -438,20 +444,21 @@ export function Terminal() {
     executeCmd(value);
   };
 
-  const complete = () => {
-    const token = value.trimStart().split(/\s+/)[0] ?? "";
-    if (!token) return;
-    const match = COMMAND_NAMES.find((c) => c.startsWith(token.toLowerCase()));
-    if (match) setValue(match + " ");
-  };
-
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       submit();
-    } else if (e.key === "Tab") {
-      e.preventDefault();
-      complete();
+    } else if (e.key === "Tab" && !e.shiftKey) {
+      // Only swallow Tab when it actually completes something — otherwise
+      // keyboard users must be able to tab out of the terminal.
+      const token = value.trimStart().split(/\s+/)[0] ?? "";
+      const match = token
+        ? COMMAND_NAMES.find((c) => c.startsWith(token.toLowerCase()))
+        : undefined;
+      if (match && match.toLowerCase() !== token.toLowerCase()) {
+        e.preventDefault();
+        setValue(match + " ");
+      }
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (!history.length) return;
@@ -474,17 +481,22 @@ export function Terminal() {
 
   return (
     <div
-      onClick={focusInput}
+      onClick={() => {
+        // Don't steal focus (and collapse the selection) after a drag-select.
+        const sel = window.getSelection();
+        if (sel && !sel.isCollapsed) return;
+        focusInput();
+      }}
       className="overflow-hidden rounded-card border border-[#252525] bg-[#101010] shadow-soft transition-colors duration-500 hover:border-[#333]"
     >
       <div className="flex items-center gap-2 border-b border-[#1c1c1c] bg-[#141414] px-5 py-3.5">
         <span className="h-3 w-3 rounded-full bg-[#d62e69]" />
         <span className="h-3 w-3 rounded-full bg-[#f0c95a]" />
         <span className="h-3 w-3 rounded-full bg-[#7ac943]" />
-        <span className="ml-3 select-none font-mono text-[12px] tracking-wide text-[#666]">
+        <span className="ml-3 select-none font-mono text-[12px] tracking-wide text-[#8a8a8a]">
           vineeth@portfolio — zsh
         </span>
-        <span className="ml-auto hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#4a4a4a] sm:block">
+        <span className="ml-auto hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#7c7c7c] sm:block">
           interactive
         </span>
       </div>
@@ -507,7 +519,7 @@ export function Terminal() {
             <span className="ml-2 text-[#42b8d9]">~/vineeth</span>
             <span className="ml-2 text-[#d62e69]">$</span>
           </span>
-          <span className="relative min-w-[40%] grow">
+          <span className="relative min-w-[40%] grow whitespace-pre-wrap break-words">
             <span className="text-[#f0eee8]">{value}</span>
             <span className="term-caret ml-px inline-block h-[15px] w-[8px] translate-y-[2px] bg-[#f0eee8]" />
             <input
@@ -526,7 +538,7 @@ export function Terminal() {
       </div>
 
       <div className="flex flex-wrap items-center gap-2 border-t border-[#1c1c1c] px-5 py-4">
-        <span className="mr-1 hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#4a4a4a] sm:block">
+        <span className="mr-1 hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#7c7c7c] sm:block">
           try:
         </span>
         {COMMAND_NAMES.filter((c) => !["clear", "open"].includes(c)).map((c) => (
@@ -537,7 +549,7 @@ export function Terminal() {
               e.stopPropagation();
               executeCmd(c);
             }}
-            className="tag-dark tag-dark-fixed px-3.5 py-1 font-mono text-[12px] transition-colors duration-300 hover:border-[#d62e69] hover:text-[#f09bc0]"
+            className="tag-dark tag-dark-fixed px-3.5 py-2 font-mono text-[12px] transition-colors duration-300 hover:border-[#d62e69] hover:text-[#f09bc0]"
           >
             {c}
           </button>

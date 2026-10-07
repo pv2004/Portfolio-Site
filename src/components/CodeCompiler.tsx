@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -43,13 +44,13 @@ function highlight(line: string): ReactNode[] {
     }
     const [full, comment, str, kw, num] = m;
     const cls = comment
-      ? "italic text-[#666]"
+      ? "italic code-comment"
       : str
-        ? "text-[#7ac943]"
+        ? "code-string"
         : kw
-          ? "text-[#d62e69]"
+          ? "code-keyword"
           : num
-            ? "text-[#42b8d9]"
+            ? "code-number"
             : "";
     nodes.push(
       <span key={key++} className={cls}>
@@ -103,6 +104,7 @@ function StatusBar({ phase }: { phase: Phase }) {
 
 export function CodeCompiler() {
   const reduced = useReducedMotion();
+  const codeRef = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState(reduced ? SCRIPT.length : 0);
   const [phase, setPhase] = useState<Phase>(reduced ? "running" : "typing");
 
@@ -138,6 +140,12 @@ export function CodeCompiler() {
 
   const lines = SCRIPT.slice(0, count).split("\n");
 
+  // Keep the caret in view while the script types itself out.
+  useEffect(() => {
+    const el = codeRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [count]);
+
   return (
     <div className="overflow-hidden rounded-card border border-[var(--border-light)] bg-[var(--bg-card)] shadow-soft transition-colors duration-500 hover:border-[var(--border)]">
       <div className="flex items-center gap-2 border-b border-[var(--border)] bg-[var(--bg-card)] px-5 py-3.5">
@@ -152,25 +160,26 @@ export function CodeCompiler() {
         </span>
       </div>
 
-      <div className="flex h-[258px] gap-4 overflow-hidden px-5 py-4 font-mono text-[13px] leading-[1.5]">
-        <div className="select-none pt-px text-right text-[var(--text-dim)]">
-          {lines.map((_, i) => (
-            <div key={i}>{String(i + 1).padStart(2, " ")}</div>
-          ))}
-        </div>
-        <pre className="min-w-0 flex-1 whitespace-pre-wrap break-words">
-          {lines.map((line, i) => (
-            <div key={i}>
+      <div
+        ref={codeRef}
+        className="h-[258px] overflow-y-auto overscroll-contain px-5 py-4 font-mono text-[13px] leading-[1.5]"
+      >
+        {lines.map((line, i) => (
+          <div key={i} className="flex">
+            <span className="select-none shrink-0 pr-4 text-right text-[var(--text-dim)]">
+              {String(i + 1).padStart(2, " ")}
+            </span>
+            <span className="min-w-0 flex-1 whitespace-pre-wrap break-words">
               {highlight(line)}
               {i === lines.length - 1 && phase === "typing" && (
                 <span className="term-caret ml-px inline-block h-[13px] w-[7px] translate-y-[2px] bg-[var(--text-primary)]" />
               )}
-            </div>
-          ))}
-        </pre>
+            </span>
+          </div>
+        ))}
       </div>
 
-      <div className="min-h-[132px] border-t border-[var(--border)] bg-[var(--bg)] px-5 py-3.5 font-mono text-[12.5px] leading-relaxed">
+      <div className="min-h-[156px] border-t border-[var(--border)] bg-[var(--bg)] px-5 py-3.5 font-mono text-[12.5px] leading-relaxed">
         {phase === "running" || reduced ? (
           <>
             <div className="out-line text-[var(--text-muted)]">$ python weather_app.py</div>
@@ -180,16 +189,16 @@ export function CodeCompiler() {
                 className="out-line text-[var(--text-primary)]"
                 style={{ animationDelay: `${300 + i * 350}ms` }}
               >
-                <span className="text-[#f09bc0]">{day}</span>
+                <span className="code-day">{day}</span>
                 {"  "}
                 {temp.padEnd(6, "\u00a0")}
-                <span className={rain.includes("65") ? "text-[#42b8d9]" : ""}>
+                <span className={rain.includes("65") ? "code-number" : ""}>
                   {rain}
                 </span>
               </div>
             ))}
             <div
-              className="out-line text-[#7ac943]"
+              className="out-line code-ok"
               style={{ animationDelay: `${300 + OUTPUT_ROWS.length * 350}ms` }}
             >
               ✓ question answered — it&apos;s running code now.

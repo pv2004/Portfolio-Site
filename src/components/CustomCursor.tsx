@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
+  useReducedMotion,
   useSpring,
   useTransform,
 } from "framer-motion";
@@ -12,6 +13,7 @@ type Mode = "idle" | "hover" | "view";
 export function CustomCursor() {
   const { theme } = useTheme();
   const isLight = theme === "light";
+  const reduce = useReducedMotion();
 
   const [enabled, setEnabled] = useState(false);
   const [mode, setMode] = useState<Mode>("idle");
@@ -26,7 +28,11 @@ export function CustomCursor() {
   const ringY = useTransform(useSpring(y, { stiffness: 260, damping: 28, mass: 0.7 }), (v) => v - 24);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    // Reduced motion: skip the custom cursor entirely and keep the native one.
+    if (reduce || !window.matchMedia("(pointer: fine)").matches) {
+      setEnabled(false);
+      return;
+    }
     setEnabled(true);
     document.body.classList.add("has-custom-cursor");
 
@@ -61,7 +67,7 @@ export function CustomCursor() {
       document.documentElement.removeEventListener("mouseleave", leave);
       document.documentElement.removeEventListener("mouseenter", enter);
     };
-  }, [x, y]);
+  }, [x, y, reduce]);
 
   if (!enabled) return null;
 

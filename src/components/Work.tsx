@@ -13,7 +13,7 @@ export function Work() {
         <Reveal delay={0.08}>
           <h2 className="mt-6 max-w-[15ch] font-serif text-[clamp(44px,5vw,66px)] leading-[1.02] text-[var(--text-primary)] md:mx-auto md:text-center">
             Code for purpose,{" "}
-            <em className="italic text-[#d62e69]">people</em> and solutions.
+            <em className="italic text-[var(--accent)]">people</em> and solutions.
           </h2>
         </Reveal>
 

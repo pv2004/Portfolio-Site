@@ -5,12 +5,40 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio of Pabolu Vineeth — software developer, data analyst and IoT builder turning problems into clean, working software." />
+    <script>
+      // Apply the stored theme before first paint so light-mode visitors
+      // never see a dark flash. Mirrors ThemeContext's resolution order:
+      // ?theme= query param, then localStorage, then dark.
+      (function () {
+        var theme = null;
+        try {
+          var q = new URLSearchParams(window.location.search).get("theme");
+          if (q === "dark" || q === "light") {
+            theme = q;
+          } else {
+            var stored = window.localStorage.getItem("theme");
+            if (stored === "dark" || stored === "light") theme = stored;
+          }
+        } catch (e) {
+          /* storage unavailable — fall through to the default */
+        }
+        document.documentElement.setAttribute("data-theme", theme || "dark");
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <title>Vineeth Pabolu — Software Developer</title>
   </head>
   <body>

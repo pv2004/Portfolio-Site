@@ -9,12 +9,14 @@
     --bg-card: #111111;
     --text-primary: #f0eee8;
     --text-secondary: #989898;
-    --text-muted: #666666;
-    --text-dim: #4a4a4a;
+    --text-muted: #8a8a8a;
+    --text-dim: #7c7c7c;
     --border: #1c1c1c;
     --border-light: #252525;
     --accent: #d62e69;
     --accent-secondary: #f09bc0;
+    /* Frosted navbar background (Tailwind can't apply an alpha to var() colors) */
+    --nav-bg: rgba(8, 8, 8, 0.85);
     /* Tech-stack badge text (dark surfaces / dark theme) */
     --tag-text: rgba(240, 238, 232, 0.78);
   }
@@ -25,12 +27,14 @@
     --bg-card: #ffffff;
     --text-primary: #1a1a1a;
     --text-secondary: #555555;
-    --text-muted: #888888;
-    --text-dim: #aaaaaa;
+    --text-muted: #666666;
+    --text-dim: #6f6f6f;
     --border: #e0ddd6;
     --border-light: #d0cdc6;
     --accent: #c4205a;
     --accent-secondary: #d62e69;
+    /* Frosted navbar background (Tailwind can't apply an alpha to var() colors) */
+    --nav-bg: rgba(245, 243, 238, 0.85);
     /* Tech-stack badge text — dark ink so badges stay readable on light bg */
     --tag-text: #2f2f2f;
   }
@@ -49,7 +53,8 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  section[id] {
+  section[id],
+  footer[id] {
     scroll-margin-top: 90px;
   }
 
@@ -61,7 +66,6 @@
   :focus-visible {
     outline: 2px solid #d62e69;
     outline-offset: 4px;
-    border-radius: 4px;
   }
 
   h1,
@@ -250,8 +254,10 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -262,4 +268,61 @@
   body.has-custom-cursor * {
     cursor: none;
   }
+}
+
+/* Hero fills the viewport minus the navbar, using dvh where supported so the
+   bottom meta row isn't hidden behind mobile browser chrome. */
+.hero-min-h {
+  min-height: calc(100vh - 82px);
+}
+@supports (min-height: 100dvh) {
+  .hero-min-h {
+    min-height: calc(100dvh - 82px);
+  }
+}
+
+/* Theme-aware accent for display text that can't use a theme variable */
+.accent-lilac {
+  color: #e0a8f0;
+}
+[data-theme="light"] .accent-lilac {
+  color: #8b4fd0;
+}
+
+/* Syntax highlighting that stays legible on both the dark and light card */
+.code-comment {
+  color: #8a8a8a;
+}
+.code-string {
+  color: #7ac943;
+}
+.code-number {
+  color: #42b8d9;
+}
+.code-keyword {
+  color: #d62e69;
+}
+.code-day {
+  color: #f09bc0;
+}
+.code-ok {
+  color: #7ac943;
+}
+[data-theme="light"] .code-comment {
+  color: #6b6b6b;
+}
+[data-theme="light"] .code-string {
+  color: #2f7d1e;
+}
+[data-theme="light"] .code-number {
+  color: #16688a;
+}
+[data-theme="light"] .code-keyword {
+  color: #c4205a;
+}
+[data-theme="light"] .code-day {
+  color: #b03568;
+}
+[data-theme="light"] .code-ok {
+  color: #2f7d1e;
 }

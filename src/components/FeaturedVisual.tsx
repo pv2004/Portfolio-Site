@@ -20,10 +20,10 @@ export function FeaturedVisual() {
               <SectionLabel>In motion</SectionLabel>
               <h2 className="mt-6 font-serif text-[clamp(40px,4.6vw,72px)] leading-[1.02] text-[var(--text-primary)]">
                 It starts with a{" "}
-                <em className="italic text-[#d62e69]">question,</em>
+                <em className="italic text-[var(--accent)]">question,</em>
                 <br />
                 and becomes{" "}
-                <em className="italic text-[#F09BC0]">code.</em>
+                <em className="italic text-[var(--accent-secondary)]">code.</em>
               </h2>
               <p className="mt-8 max-w-[36ch] text-[17px] leading-[1.6] text-[var(--text-secondary)]">
                 Watch a question turn into a running program — the same way

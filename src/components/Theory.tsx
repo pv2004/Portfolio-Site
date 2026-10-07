@@ -59,12 +59,14 @@ function Folder() {
   return (
     <div className="relative mx-auto w-[min(940px,100%)]" aria-hidden="true">
       <div
-        className="float-slow absolute left-1/2 top-0 h-24 w-[240px] -translate-x-1/2 rounded-t-[26px]"
-        style={{
-          background: "linear-gradient(135deg, #E0A8F0, #B878E0)",
-          boxShadow: "0 24px 60px -24px rgba(184,120,224,0.45)",
-        }}
-      />
+        className="absolute left-1/2 top-[-48px] h-24 w-[240px] -translate-x-1/2 rounded-t-[26px]"
+        style={{ boxShadow: "0 24px 60px -24px rgba(184,120,224,0.45)" }}
+      >
+        <div
+          className="float-slow h-full w-full rounded-t-[26px]"
+          style={{ background: "linear-gradient(135deg, #E0A8F0, #B878E0)" }}
+        />
+      </div>
       <div
         className="float-slow relative h-[480px] w-full rounded-[30px] sm:h-[560px]"
         style={{
@@ -120,7 +122,7 @@ export function Theory() {
         <Reveal delay={0.08}>
           <h2 className="mt-6 max-w-[12ch] font-serif text-[clamp(44px,5.4vw,76px)] leading-[1.02] text-[var(--text-primary)]">
             How I think about{" "}
-            <em className="italic text-[#E0A8F0]">building</em>
+            <em className="italic accent-lilac">building</em>
           </h2>
         </Reveal>
 

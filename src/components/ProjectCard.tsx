@@ -15,14 +15,14 @@ export function ProjectCard({ project }: { project: Project }) {
           <Artwork variant={project.art} />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/35 via-transparent to-transparent opacity-80" />
-        <span className="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#f0eee8] text-[#080808] opacity-0 transition-all duration-500 group-hover:opacity-100">
+        <span className="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#f0eee8] text-[#080808] opacity-0 transition-all duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
       </div>
 
-      <h3 className="mt-7 font-serif text-[30px] leading-[1.1] text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[#d62e69]">
+      <h3 className="mt-7 font-serif text-[30px] leading-[1.1] text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--accent)]">
         {project.title}
       </h3>
       <p className="mt-3 max-w-[46ch] text-[17px] leading-[1.5] text-[var(--text-secondary)]">

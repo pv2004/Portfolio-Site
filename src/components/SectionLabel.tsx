@@ -8,7 +8,7 @@ export function SectionLabel({
   return (
     <p
       className={`text-[13px] font-medium uppercase tracking-[0.22em] ${
-        light ? "text-[#8a8a8a]" : "text-[#9a9a94]"
+        light ? "text-[var(--text-muted)]" : "text-[var(--text-secondary)]"
       }`}
     >
       <span

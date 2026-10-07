@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Navbar } from "./components/Navbar";
+import { CodeArtSwitcher } from "./components/CodeArtSwitcher";
 import { Hero } from "./components/Hero";
 import { Work } from "./components/Work";
 import { Theory } from "./components/Theory";
@@ -15,6 +16,7 @@ export function Home() {
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
       <Navbar />
+      <CodeArtSwitcher />
       <Hero />
       <Work />
       <Theory />
